@@ -12,7 +12,7 @@ function App() {
     setLoading(true);
     try {
       // This talks to your Python Backend!
-      const response = await fetch('http://127.0.0.1:8000/process-request', {
+      const response = await fetch('https://medflow-nexus01.onrender.com', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
