@@ -7,12 +7,17 @@ function App() {
   const [results, setResults] = useState(null);
   const [loading, setLoading] = useState(false);
 
+  // Replace your old fetch URL with this smart variable
+  const backendUrl = import.meta.env.DEV
+    ? 'http://127.0.0.1:8000'           // If I'm on my laptop
+    : 'https://medflow-nexus01.onrender.com';    // If I'm on the internet (Vercel)
+
   // 2. Function called when the button is clicked
   const handleSubmit = async () => {
     setLoading(true);
     try {
       // This talks to your Python Backend!
-      const response = await fetch('https://medflow-nexus01.onrender.com', {
+      const response = await fetch(`${backendUrl}/process-request`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -37,7 +42,7 @@ function App() {
       {/* Input Section */}
       <div className="input-section">
         <h3>New Inventory Request</h3>
-        <textarea 
+        <textarea
           value={userInput}
           onChange={(e) => setUserInput(e.target.value)}
           placeholder="E.g., We urgently need 200 boxes of nitrile gloves for the ER."
