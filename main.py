@@ -18,7 +18,7 @@ app = FastAPI()
 # This tells the backend: "Trust requests coming from localhost:5173" (where our React app will run)
 origins = [
     "http://localhost:5173",
-    "http://127.0.0.1:5173",
+    "https://medflow-nexus-o312.vercel.app",  # <— Must have https:// and NO slash at the end
 ]
 
 app.add_middleware(
